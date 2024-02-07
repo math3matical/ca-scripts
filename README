@@ -1,16 +1,26 @@
+##################
+## HOW TO START ##
+##################
+
+- Clone the repo and start the steps
+
+git clone https://github.com/math3matical/ca-scripts.git
+cd ca-scripts
+
+
 ################
 ## HOW TO RUN ##
 ################
 
 - There are 3 scripts to run, which will create the root ca, the intermediate ca, and then the server certificate:
 
-ruby /var/ca-scripts/root.ca.rb
-ruby /var/ca-scripts/intermediate.ca.rb
-ruby /var/ca-scripts/server.cert.rb
+ruby root.ca.rb
+ruby intermediate.ca.rb
+ruby server.cert.rb
 
 - There is 1 script to run to change the name of the server certificate in case you have multiple certificates you need to create:
 
-ruby /var/ca-scripts/settings.server.rb
+ruby settings.server.rb
 
 
 ##############
@@ -19,9 +29,9 @@ ruby /var/ca-scripts/settings.server.rb
 
 - The root ca, intermediate ca and the server certificate all get their settings from the /var/ca-scripts/settings directory:
 
-/var/ca-scripts/settings/root.ca.conf
-/var/ca-scripts/settings/intermediate.ca.conf
-/var/ca-scripts/settings/server.cert.conf
+`current_directory`/settings/root.ca.conf
+`current_directory`/settings/intermediate.ca.conf
+`current_directory`/settings/server.cert.conf
 
 - These can be changed at user's discretion.  Out of the box this will create all the certificates with the default setting.
 - The most important settings to change are the server certificate if you are creating multiple server certificates with the intermediate certificate.  The 2 settings that need changing are:
@@ -36,14 +46,14 @@ srv_fqdn
 
 - The root ca will be stored in the root ca directory:
 
-/var/ca-scripts/ca/
+`current_directory`/ca/
 
 - The intermediate ca will be created withint the root ca directory, with the given name of the intermediate directory found in the intermediate.ca.conf file, e.g.:
 
-/var/ca-scripts/ca/intermediate/
+`current_directory`/ca/intermediate/
 
 - The server certificate, server private key, and the ca-bundle will be created and stored inside the intermediate directory, e.g.:
 
-/var/ca-scripts/ca/intermediate/certs/ca-bundle.cert.pem
-/var/ca-scripts/ca/intermediate/certs/satellite.example.com.cert.pem
-/var/ca-scripts/ca/intermediate/private/satellite.example.com.key.pem
+`current_directory`/ca/intermediate/certs/ca-bundle.cert.pem
+`current_directory`/ca/intermediate/certs/satellite.example.com.cert.pem
+`current_directory`/ca/intermediate/private/satellite.example.com.key.pem
