@@ -20,7 +20,7 @@ ruby server.cert.rb
 
 - There is 1 script to run to change the name of the server certificate in case you have multiple certificates you need to create:
 
-ruby settings.server.rb
+ruby change.server.rb
 
 
 ##############
