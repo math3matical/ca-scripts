@@ -2,7 +2,8 @@
 
 require 'fileutils'
 
-file = File.open("/var/ca-scripts/settings/root.ca.conf")
+# file = File.open("/var/ca-scripts/settings/root.ca.conf")
+file = File.open("settings/root.ca.conf")
 file_data = file.readlines.map(&:chomp)
 file.close
 settings={}
@@ -17,7 +18,8 @@ settings.each do |key, value|
   settings[key].strip!
 end
 
-opensslcnf = `cat /var/ca-scripts/openssl/openssl.cnf`
+# opensslcnf = `cat /var/ca-scripts/openssl/openssl.cnf`
+opensslcnf = `cat openssl/openssl.cnf`
 
 settings.each do |key, value|
   opensslcnf.gsub!("#{key.to_s.upcase}","#{value}")
@@ -26,7 +28,8 @@ end
 FileUtils.mkdir_p("#{settings[:directory]}")
 File.write("#{settings[:directory]}/openssl.cnf", opensslcnf)
 
-script = `cat /var/ca-scripts/scripts/root-ca.sh`
+# script = `cat /var/ca-scripts/scripts/root-ca.sh`
+script = `cat scripts/root-ca.sh`
 
 settings.each do |key, value|
   script.gsub!("#{key.to_s.upcase}","#{value}")
