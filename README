@@ -27,7 +27,7 @@ ruby change.server.rb
 ## SETTINGS ##
 ##############
 
-- The root ca, intermediate ca and the server certificate all get their settings from the /var/ca-scripts/settings directory:
+- The root ca, intermediate ca and the server certificate all get their settings from the `current_directory`/settings directory:
 
 `current_directory`/settings/root.ca.conf
 `current_directory`/settings/intermediate.ca.conf
